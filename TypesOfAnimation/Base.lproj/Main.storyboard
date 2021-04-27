@@ -101,6 +101,7 @@
                         <outlet property="delayLabel" destination="gwi-Aa-kQd" id="Z6O-HJ-thD"/>
                         <outlet property="durationLabel" destination="6XI-Oh-SWJ" id="WaB-AQ-LtQ"/>
                         <outlet property="forseLable" destination="2X4-T1-Jym" id="qMN-Mx-dyD"/>
+                        <outlet property="nameBotton" destination="LNJ-BS-1Qd" id="XKX-NO-KeZ"/>
                         <outlet property="presentLable" destination="Frc-yz-Yb0" id="q86-MX-433"/>
                     </connections>
                 </viewController>
