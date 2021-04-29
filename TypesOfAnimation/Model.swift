@@ -22,9 +22,9 @@ extension Animation {
         
         let iterationCount = DataManager.shared.animations.count
         
-        for _ in 0..<iterationCount{
+        for index in 0..<iterationCount{
             let animation = Animation(
-                present: DataManager.shared.animations.randomElement() ?? "",
+                present: DataManager.shared.animations[index],
                 curve: DataManager.shared.curve.randomElement() ?? "",
                 force: Float.random(in: 1.0...1.8),
                 duration: Float.random(in: 0.5...1.3),

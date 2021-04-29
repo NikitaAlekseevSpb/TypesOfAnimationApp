@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     let animations = Animation.getAnimations()
     
-    private var animationStarted = true
+    private var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +29,8 @@ class ViewController: UIViewController {
    
     @IBAction func showAnimation() {
         
-        if animationStarted {
-        guard let animation = animations.randomElement() else {return}
+        let animation = animations[index]
+        
         animationView.animation = animation.present
         animationView.curve = animation.curve
         animationView.force = CGFloat(animation.force)
@@ -43,10 +43,12 @@ class ViewController: UIViewController {
         forseLable.text = "Forse: \(String(format: "%.2f", animation.force))"
         durationLabel.text = "Duration: \(String(format: "%.2f", animation.duration))"
         delayLabel.text = "Delay: \(String(format: "%.2f", animation.delay))"
-        //} else {
-            nameBotton.setTitle(animation.present, for: .normal)
+        
+        index += 1
+        nameBotton.setTitle(animations[index].present, for: .normal)
+        if  index == animations.count - 1 {
+            index = 0
         }
     }
 
 }
-
