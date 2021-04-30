@@ -1,0 +1,2 @@
+# TypesOfAnimationApp
+A training project to consolidate the skills of integrating third-party frameworks into the project using CocoaPods. The goal of the task is to integrate the Spring framework for working with animations and implement the animation change at the click of a button. For this purpose, a data model for animation and a class for storing animation names are implemented. When you click on the button, a random animation is applied to the view, and the parameters of the applied animation are displayed.
