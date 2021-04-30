@@ -13,28 +13,27 @@ struct Animation {
     let force: Float
     let duration: Float
     let delay: Float
-}
-
-extension Animation {
-    static func getAnimations() -> [Animation] {
-        
-        var animations:[Animation] = []
-        
-        let iterationCount = DataManager.shared.animations.count
-        
-        for index in 0..<iterationCount{
-            let animation = Animation(
-                present: DataManager.shared.animations[index],
-                curve: DataManager.shared.curve.randomElement() ?? "",
-                force: Float.random(in: 1.0...1.8),
-                duration: Float.random(in: 0.5...1.3),
-                delay: Float.random(in: 0...0.5)
-            )
-            
-            animations.append(animation)
-        }
-        
-        return animations
+    
+    var description: String {
+        """
+        preset: \(present)
+        curve: \(curve)
+        force: \(String(format: "%.02f", force))
+        duration: \(String(format: "%.02f", duration))
+        delay: \(String(format: "%.02f", delay))
+        """
+    }
+    
+    static func getRandomAnimation() -> Animation {
+        Animation(
+            present: DataManager.shared.animations.randomElement()?.rawValue ?? "slideLeft",
+            curve: DataManager.shared.curves.randomElement()?.rawValue ?? "easeIn",
+            force: Float.random(in: 1...2),
+            duration: Float.random(in: 1...2),
+            delay: 0.3
+        )
     }
 }
+
+
 

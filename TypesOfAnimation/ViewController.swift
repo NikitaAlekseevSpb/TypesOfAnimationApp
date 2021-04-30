@@ -9,46 +9,31 @@ import Spring
 
 class ViewController: UIViewController {
 
+    // MARK: - IB Outlets
     @IBOutlet var animationView: SpringView!
+    @IBOutlet var animationLabel: UILabel!
     @IBOutlet var nameBotton: UIButton!
     
-    @IBOutlet var presentLable: UILabel!
-    @IBOutlet var curveLabel: UILabel!
-    @IBOutlet var forseLable: UILabel!
-    @IBOutlet var durationLabel: UILabel!
-    @IBOutlet var delayLabel: UILabel!
-    
-    let animations = Animation.getAnimations()
-    
-    private var index = 0
+    // MARK: - Private properties
+    private var animation = Animation.getRandomAnimation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameBotton.setTitle("Run", for: .normal)
+        animationLabel.text = animation.description
     }
    
-    @IBAction func showAnimation() {
-        
-        let animation = animations[index]
+    // MARK: - IB Actions
+    @IBAction func animationButtonPressed(_ sender: UIButton) {
+        animationLabel.text = animation.description
         
         animationView.animation = animation.present
-        animationView.curve = animation.curve
         animationView.force = CGFloat(animation.force)
         animationView.duration = CGFloat(animation.duration)
         animationView.delay = CGFloat(animation.delay)
+        animationView.curve = animation.curve
         animationView.animate()
         
-        presentLable.text = "Present: \(animation.present)"
-        curveLabel.text = "Curve: \(animation.curve)"
-        forseLable.text = "Forse: \(String(format: "%.2f", animation.force))"
-        durationLabel.text = "Duration: \(String(format: "%.2f", animation.duration))"
-        delayLabel.text = "Delay: \(String(format: "%.2f", animation.delay))"
-        
-        index += 1
-        nameBotton.setTitle(animations[index].present, for: .normal)
-        if  index == animations.count - 1 {
-            index = 0
-        }
+        animation = Animation.getRandomAnimation()
+        sender.setTitle("Run \(animation.present)", for: .normal)
     }
-
 }
